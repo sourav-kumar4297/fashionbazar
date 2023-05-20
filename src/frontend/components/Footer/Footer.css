@@ -1,0 +1,31 @@
+.footer{
+    position:relative;
+  bottom:0;
+  min-height: max-content;
+  width: 100%;
+  text-align: center;
+  padding-top: 5rem;
+}
+.socials{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+.icons{
+    height: 30px;
+    width: 30px;
+    padding-left: 10px;
+}
+.twitter{
+    color: rgb(39, 148, 202);
+}
+
+.linkedin{
+    color: blue;
+}
+
+.copyright{
+    padding-left: 2rem;
+}
