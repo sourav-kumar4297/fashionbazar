@@ -1,8 +1,14 @@
 import React from 'react'
+import { Login } from '../../components/Login/Login'
 
 export const Wishlist = () => {
   return (
-    <div>Wishlist</div>
+    <div>
+      <h1>Wishlist</h1>
+      <Login />
+
+      
+    </div>
   )
 }
 
