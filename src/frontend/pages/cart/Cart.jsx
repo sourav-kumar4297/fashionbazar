@@ -1,13 +1,12 @@
-import React from 'react'
-import { Header } from '../../components/Header/Header'
+
+import { CartItems } from './CartItems';
 
 export default function Cart() {
   return (
     <div>
-      <div>
-        <Header/>
-      </div>
-      Cart
+        
+        <CartItems />
+
       </div>
   )
 }

@@ -5,9 +5,12 @@ import LogoImage from "./logo.png"
 
 import "./header.css";
 import { FilterContext } from "../../contexts/FilterContext";
+import { AuthContext } from "../../../auth/AuthContext";
 
 export const Header = () => {
- const {  dispatch } = useContext(FilterContext);
+ const {  dispatch, filterObj } = useContext(FilterContext);
+ const { isLoggedIn } = useContext(AuthContext);
+
   return (
     <nav className="navbar">
       <div className="logo">
@@ -27,15 +30,25 @@ export const Header = () => {
         />
       </div>
         <div className="nav-list">
+          <NavLink to="/products" className="active"> Products</NavLink>
           <NavLink to="/cart" className="headerlist">
             <FaCartPlus className="icon cart"></FaCartPlus>
+            {filterObj.addToCart.length}
           </NavLink>
+
           <NavLink to="/wishlist" className="headerlist">
-            <FaHeart className="icon heart"></FaHeart>
+            <FaHeart className="icon heart"> </FaHeart>{filterObj.addToWishList.length}
           </NavLink>
-          <NavLink to="/login" className="headerlist">
+          {isLoggedIn ?
+            <NavLink to="/logout" className="headerlist">
             <FaUser className="icon user"></FaUser>
           </NavLink>
+          :<NavLink to="/login" className="headerlist">
+            <FaUser className="icon user"></FaUser>
+          </NavLink>
+          
+
+}
         </div>
     </nav>
   );

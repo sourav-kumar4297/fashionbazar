@@ -1,7 +1,6 @@
-import React, { createContext, useReducer, useState } from "react";
+import React, { createContext, useReducer } from "react";
 export const FilterContext = createContext();
 export const FilterProvider = ({ children }) => {
-
   const filterFunction = (acc, { type, value }) => {
     switch (type) {
       case "ADD_CATEGORY":
@@ -17,29 +16,55 @@ export const FilterProvider = ({ children }) => {
           ],
         };
       case "addToCart":
-      
         return {
           ...acc,
-          addToCart : [...acc.addToCart, value],
+          addToWishList: [
+            ...acc.addToWishList.filter(
+              (addToWishList) => addToWishList.id !== value.id
+            ),
+          ],
+          addToCart: [...acc.addToCart, { ...value, quantity: 1 }],
         };
-      case "removeFromCart":
-      
+      case "increaseQuantity":
+
         return {
           ...acc,
-          addToCart : [
-            ...acc.addToCart.filter((addToCart) => addToCart.id !== value),
+          addToCart: acc.addToCart.map((item) =>
+            value.id === item.id ? { ...item, quantity: item.quantity + 1 } : item
+          ),
+        };
+      case "decreaseQuantity":
+        return {
+          ...acc,
+          addToCart: acc.addToCart.map((item) =>
+            value.id === item.id && item.quantity > 1
+              ? { ...item, quantity: item.quantity - 1 }
+              : item
+          ),
+        };
+
+      case "removeFromCart":
+        return {
+          ...acc,
+          addToCart: [
+            ...acc.addToCart.filter((addToCart) => addToCart.id !== value.id),
           ],
         };
       case "addToWishList":
         return {
           ...acc,
-          addToWishList : [...acc.addToWishList, value],
+          addToCart: [
+            ...acc.addToCart.filter((addToCart) => addToCart.id !== value.id),
+          ],
+          addToWishList: [...acc.addToWishList, value],
         };
       case "removeFromWishList":
         return {
           ...acc,
-          addToWishList : [
-            ...acc.addToWishList.filter((addToWishList) => addToWishList.id !== value),
+          addToWishList: [
+            ...acc.addToWishList.filter(
+              (addToWishList) => addToWishList.id !== value.id
+            ),
           ],
         };
       case "price":
@@ -56,16 +81,17 @@ export const FilterProvider = ({ children }) => {
       case "clear":
         return {
           search: "",
-          sortby: "",
-          filters: [],
-          categories: [],
-          sortbyrating: 0,
-          price: 0,
+    sortby: "",
+    filters: [],
+    categories: [],
+    sortbyrating: 0,
+    price: 0,
+    addToCart: [],
+    addToWishList: [],
         };
 
       case "sort":
         return { ...acc, sortby: value };
-
 
       default:
         return acc;

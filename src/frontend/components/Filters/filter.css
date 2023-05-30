@@ -1,0 +1,35 @@
+.filter-category, .filter-rating, .filter-price{
+    padding: 7%;
+    border-radius: 10px;
+    margin-top: 2%;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    text-align: start;
+}
+.filter-category-label{
+    text-transform: capitalize;
+}
+.label{
+    padding-left: 10px;
+}
+
+.filter-heading{
+    padding: 5px;
+}
+.filter-container{
+    margin-left: auto;
+    width: 20%;
+}
+.filter-main-heading{
+    margin: 10px;
+    font-size: 22px;
+}
+.filter-range{
+    margin: 15px;
+}
+.filter-range-label{
+    display: block;
+    margin-bottom: 10px;
+}
+.filter-range-input{
+    width: 100%;
+}

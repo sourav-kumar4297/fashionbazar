@@ -18,16 +18,16 @@
     margin-left: auto;
     margin-right: auto;
     max-width: 1280px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    width: 100%;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    /* width: 100%; */
 }
 .headerlist {
     text-decoration: none;
     color: black;
     padding: 5px;
     margin: 5px;
-    gap: 1rem;
+    gap: .5rem;
 }
 .search{
     padding: 9px;
@@ -36,7 +36,7 @@
 }
 a{
     text-decoration: none;
-    color: balck;
+    color: black;
 }
 .search-box{
     display: flex;
