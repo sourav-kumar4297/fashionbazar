@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { FilterContext } from "../../contexts/FilterContext";
 import { CartBill } from "./CartBill";
+import "./cart.css";
 
 export const CartItems = () => {
   const { dispatch, filterObj } = useContext(FilterContext);
@@ -9,27 +10,32 @@ export const CartItems = () => {
   return filterObj.addToCart.length === 0 ? (
     <h1>No item is added to cart....</h1>
   ) : (
-    <>
+
+    <div className="cart-container">
+      <div  className="cart-card">
       {filterObj.addToCart.map((product) => (
-        <div className="card" key={product.id}>
+
+        <div key={product.id}>
+          
+          <div>
           <div className="card-image">
             <img src={product.image} alt="" height="250px" width="250px" />
           </div>
-          <div className="card-heading">
+          <div className="card-heading ">
             <h3>Name : {product.title}</h3>
             <p>
-              <b>Price : ${product.price}</b>
+              <b>Price : ₹{product.price}</b>
             </p>
             <p>Quantity :{product.quantity} </p>
-            <button onClick={(e) =>dispatch({
+            <button className="increase btn" onClick={(e) =>dispatch({
                 type: "increaseQuantity",
                 value: product
             })}>+</button>
-          <button onClick={(e) => dispatch({
+          <button className="decrease btn" onClick={(e) => dispatch({
                 type: "decreaseQuantity",
                 value: product
             })}>-</button>
-            <button
+            <button className="remove btn"
               onClick={(e) =>
                 dispatch({
                   type: "removeFromCart",
@@ -39,7 +45,7 @@ export const CartItems = () => {
             >
               Remove From Cart
             </button>
-            <button
+            <button className="add-to-wishlist btn"
               onClick={(e) =>
                 dispatch({
                   type: "addToWishList",
@@ -50,11 +56,14 @@ export const CartItems = () => {
               Move To WihList
             </button>
           </div>
+          </div>
+          
         </div>
       ))}
-      <div>
+      </div>
+      <div className="cart-bill card">
         <CartBill />
       </div>
-    </>
+    </div>
   );
 };

@@ -3,10 +3,11 @@ import {  NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../../../auth/AuthContext';
 import "./signup.css"
+import { FaEye } from 'react-icons/fa';
 export const SignUp = () => {
     const navigate = useNavigate();
   const {setIsLoggedIn } = useContext(AuthContext);
-
+  const [showPassword, setShowPassword] = useState(false); 
   const [newUserDetails, setNewUserDetails] = useState({firstName:"",
 lastName :"",
 email:"",
@@ -28,6 +29,10 @@ const signupHandler = async (e) => {
     } catch (error) {
       console.log(error);
     }
+  };
+  
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -67,21 +72,41 @@ const signupHandler = async (e) => {
         </div>
         <div className="inputbox">
           <label htmlFor="password">Password:</label>
+          <div className='password-input'>
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             id="password"
             value={setNewUserDetails.password}
             onChange={(e) =>setNewUserDetails({...newUserDetails,password: e.target.value})}
           />
+          <span
+                    className={`password-toggle ${
+                      showPassword ? "visible" : ""
+                    }`}
+                    onClick={togglePasswordVisibility}
+                  >
+                    <FaEye></FaEye>
+                  </span>
+          </div>
         </div>
         <div className="inputbox">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Confirm Password:</label>
+          <div className='password-input'>
           <input
-            type="password"
+          type={showPassword ? "text" : "password"}
             id="password"
             value={setNewUserDetails.password}
             onChange={(e) =>setNewUserDetails({...newUserDetails,password: e.target.value})}
           />
+          <span
+          className={`password-toggle ${
+            showPassword ? "visible" : ""
+          }`}
+          onClick={togglePasswordVisibility}
+          >
+            <FaEye></FaEye>
+          </span>
+          </div>
         </div>
         <button type="submit" className='create-new-account-btn'>Create New Account</button>
       </form>

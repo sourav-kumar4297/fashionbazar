@@ -1,0 +1,29 @@
+.card-header{
+    display: flex;
+    padding: 10px;
+    border: 2px solid;
+    justify-content: space-around;
+}
+.card-logout{
+    width: 50%;
+    justify-content: center;
+    margin: auto;
+}
+.button-logout{
+    width: 150px;
+    margin-top: 20px ;
+}
+.button{
+    width: 54%;
+    margin-top: 10px;
+}
+.address-edit-input {
+display: grid;
+margin: 10px;
+}
+.address-edit-input input{
+    
+    margin: inherit;
+    font-size: large;
+
+}

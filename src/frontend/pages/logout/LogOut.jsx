@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { AuthContext } from '../../../auth/AuthContext';
 import { LogoutContext } from './LogoutContext';
+import "./logout.css";
 
 export const LogOut = () => {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ export const LogOut = () => {
       <h2>{user.name}</h2>
       <p>Email: {user.email}</p>
       {/* <button onClick={toggleAddress}>User Address</button> */}
-      <button onClick={logOutHandle}>Log out</button>
+      <button className='button-logout' onClick={logOutHandle}>Log out</button>
     </div>
   );
 
@@ -69,16 +70,17 @@ export const LogOut = () => {
         </label>
       </div>
     ))}
-      <button onClick={toggleEditAddress}>Edit Address</button>
-      <button onClick={deleteAddress}>Delete Address</button>
-      <button onClick={addAddress}>Add Address</button>
+      <button className='button edit-address' onClick={toggleEditAddress}>Edit Address</button>
+      <button className='button delete-address' onClick={deleteAddress}>Delete Address</button>
+      <button className='button add-address' onClick={addAddress}>Add Address</button>
 
     </div>
   );
 
   const renderEditUserAddress = () => (
-    <div>
+    <div >
       <h2>{user.name}</h2>
+      <div className='address-edit-input'>
       <input
         type="text"
         placeholder="H.No"
@@ -121,6 +123,7 @@ export const LogOut = () => {
         value={user.addresses.find((address) => address.id === user.selectedAddressId)?.phone || ''}
         onChange={(e) => editAddressField('phone', e.target.value)}
       />
+      </div>
       <button onClick={saveAddress}>Save Address</button>
       <button onClick={cancelEditAddress}>Cancel</button>
     </div>
@@ -135,7 +138,7 @@ export const LogOut = () => {
   };
 
   return (
-    <div className="card">
+    <div className="card-logout card">
       <div className="card-header">
         <div className={userProfileVisible ? 'active' : ''} onClick={toggleProfile}>
           User Profile

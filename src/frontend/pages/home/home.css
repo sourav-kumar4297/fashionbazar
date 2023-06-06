@@ -4,12 +4,14 @@
     background-size: cover;
 }
 .home-heading{
-border: 2px solid;
-text-align: left;
-position: relative;
-width: fit-content;
-top: 10rem;
-left: 10rem;
+width:70%;
+margin: auto;
+margin-top: 40px;
+box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+text-align: center;
+padding: 60px 90px;
+
+
 }
 .home-heading h4{
     color: black;
@@ -18,12 +20,13 @@ left: 10rem;
 .home-heading h1{
     color: black;
     font-size: 35px;
+    margin: 10px 0px;
     
 }
 .category-boxes{
-    border: 2px solid;
     padding: 5px;
     margin: 5px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .home-heading button{
@@ -32,9 +35,9 @@ left: 10rem;
     background-color: #ffc107;
     font-size: 20px;
     border-radius: 5px;
+    width: 20%;
 }
 .box-container{
-    border: 2px solid black;
     padding: 8px 0px;
     display: flex;
     align-items: center;

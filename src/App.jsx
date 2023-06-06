@@ -12,6 +12,7 @@ import { SignUp } from "./frontend/pages/signup/SignUp";
 import { Header } from "./frontend/components/Header/Header";
 import { SingleProduct } from "./frontend/pages/single product/SingleProduct";
 import { CheckOut } from "./frontend/pages/checkout/CheckOut";
+import { OrderPlaced } from "./frontend/pages/order placed/OrderPlaced";
 // import Mockman from "mockman-js"
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
        <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<LogOut />} />
         <Route path="/checkout" element={<CheckOut />} />
+        <Route path="/orderplaced" element={<OrderPlaced />} />
+      
       </Routes>
       <Footer />
     </div>

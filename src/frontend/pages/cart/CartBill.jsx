@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router';
 import { FilterContext } from '../../contexts/FilterContext';
 import { CartContext } from './CartContext';
+import "./cart.css"
 
 export const CartBill = () => {
 const { filterObj} = useContext(FilterContext);
@@ -10,19 +11,19 @@ const {initialCart, dispatch} = useContext(CartContext);
     const {discount} = initialCart;
       const navigate = useNavigate();;
     
-    
+      const subtotal = filterObj.addToCart.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
     
       const calculateTotal = () => {
-        const subtotal = filterObj.addToCart.reduce(
-          (total, item) => total + item.price * item.quantity,
-          0
-        );
+        
         const totalDiscounted = subtotal - (subtotal*discount/100);
         return totalDiscounted;
       };
     
       const applyCoupon = (appliedCoupon,value) => {
-
+        setCoupon(appliedCoupon)
         dispatch({type:appliedCoupon , value: value } )
         
       };
@@ -41,30 +42,26 @@ const {initialCart, dispatch} = useContext(CartContext);
           <label htmlFor="coupon3">Coupon 3</label>
         </div>
         </div>
-
-        {coupon && <h3>{coupon} IS APPLIED.</h3>}
+<div className='applied-coupon'>      
+   {coupon && <h3>{coupon} IS APPLIED</h3>}
+</div>
+ 
         <hr />
         <h2>PRICE DETAILS</h2>
         <hr/>
-        <div>
-            <p>Price(total cart items) 
-                <span> price of one item</span></p>
-                <p>Discount 
-                    <span>(-discount of each item is different)</span>
-                </p>
-                <p>Delivery Charges 
+        <div className='card-price-details'>
+            <p className='card-prices'>Price
+                <span> ₹{subtotal}</span></p>
+                <p className='card-prices'>Delivery Charges 
                     <span>FREE</span>
                 </p>
-                <p>Coupin Discount 
-                    <span>after aplying coupon</span>
+                <p className='card-prices'>Coupin Discount 
+                    <span>{coupon}</span>
                 </p>
 
-                <p><b>Total Amount  <span>
-                ${calculateTotal().toFixed(2)}</span></b></p>
-
-                    <p>your total saving is this in this order</p>
-
-                    <button onClick={()=> navigate("/checkout")}>
+                <p className='card-prices'><b>Total Amount  </b><span>
+                <b>₹{calculateTotal().toFixed(2)}</b></span></p>
+                    <button className='checkout-btn'  onClick={()=> navigate("/checkout")}>
                         Checkout
                     </button>
         </div>
