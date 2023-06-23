@@ -1,7 +1,12 @@
-import React from 'react'
+
+import { CartItems } from './CartItems';
 
 export default function Cart() {
   return (
-    <div>Cart</div>
+    <div>
+        
+        <CartItems />
+
+      </div>
   )
 }

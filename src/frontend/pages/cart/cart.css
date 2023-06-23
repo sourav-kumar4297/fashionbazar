@@ -1,0 +1,48 @@
+.cart-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin: auto;
+    justify-content: center;
+}
+.cart-card{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 40px;
+
+}
+.card-bill{
+    width: max-content;
+    height: auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 7px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+    .applied-coupon{
+padding: 20px;
+    }
+
+.card-price-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.card-prices{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.checkout-btn{
+    margin:auto;
+    margin-top: 10px;
+}
+.increase, .decrease{
+    display: inline;
+    width: max-content;
+    padding: 12px;
+    margin: 12px;
+}
